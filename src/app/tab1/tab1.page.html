@@ -1,0 +1,219 @@
+<ion-header [translucent]="true">
+
+	<br>
+	<br>
+	<br>
+	
+	<ion-toolbar *ngIf="seccion !== '' ">
+
+		<div class="top-bar" [ngClass]="{'ppsa': seccion === 'A', 'ppsb' : seccion === 'B' }">
+			<!--div class="avatar"><p>{{seccion}}
+  </p></!--div-->
+			<br>
+			<img *ngIf="seccion=='A'" class="avatar"
+				src="https://envri.eu/wp-content/uploads/2016/08/software-developer-copy.jpg" alt="Avatar man">
+			<img *ngIf="seccion=='B'" class="avatar"
+				src="https://i.pinimg.com/originals/93/d3/e3/93d3e31639a4d07613de9dccdc8bd5e8.png" alt="Avatar man">
+
+			<p><b>
+				<div class="name" style="font-size: 30px">{{materia}}-4°{{seccion}}</div>
+			</b></p>
+		</div>
+	</ion-toolbar>
+
+</ion-header>
+<br>
+<br>
+
+<ion-content [fullscreen]="true">
+
+
+	<!--It's just a concept, a chat UI design for direct messaging!
+Enjoy! :) Don't forget to click the heart if you like it! -->
+
+	<div *ngIf="seccion==''" class="split left" style="color: white;" (click)="selectTeam('A')">
+		<div class="centered">
+			<img src="https://envri.eu/wp-content/uploads/2016/08/software-developer-copy.jpg" alt="Avatar woman">
+			<h2>PPS-4°A</h2>
+			<p>Empezar a chatear.</p>
+		</div>
+	</div>
+
+	<div *ngIf="seccion==''" class="split right" (click)="selectTeam('B')">
+		<div class="centered">
+			<img src="https://i.pinimg.com/originals/93/d3/e3/93d3e31639a4d07613de9dccdc8bd5e8.png" alt="Avatar man">
+			<h2>PPS-4°B</h2>
+			<p>Empezar a chatear.</p>
+		</div>
+	</div>
+
+
+	<!--div *ngIf="false" *ngFor="let message of messages">
+
+		<div *ngIf="message.email != myEmail[0]" class="incoming">
+			<li class="bubble">
+
+				<p *ngIf="message.email !== myEmail[0]" style="color:chocolate;">
+					<b>{{message.email.split('@')[0]}}:
+					</b> </p>
+
+				{{message.message}}
+
+				<p>
+						<img style="margin-right: 0; width:15%; height:15%"
+							src="https://firebasestorage.googleapis.com/v0/b/pps1-251a8.appspot.com/o/assets%2Fanimales%2Fback-in-time.png?alt=media&token=5b3801d0-2884-4007-8517-b19931e75e06" />
+						{{message.time  | fecha}}
+					
+				</p>
+			</li>
+			<br>
+		</div>
+
+
+		<div *ngIf="message.email == myEmail[0]" class="outcoming">
+			<div class="bubble">
+
+				<p *ngIf="message.email !== myEmail[0]" style="color:chocolate;">
+					<b>{{message.email.split('@')[0]}}:
+					</b> </p>
+
+				{{message.message}}
+
+				<p>
+						<img style="margin-right: 0; width:15%; height:15%"
+							src="https://firebasestorage.googleapis.com/v0/b/pps1-251a8.appspot.com/o/assets%2Fanimales%2Fback-in-time.png?alt=media&token=5b3801d0-2884-4007-8517-b19931e75e06" />
+						{{message.time  | fecha}}
+					
+				</p>
+			</div>
+		</div>
+
+	</div-->
+
+	<!--div *ngIf="seccion !== '' " class="container">
+
+		<div-- class="menu">
+			<div class="back"><i class="fa fa-chevron-left"></i>
+
+				<img *ngIf="seccion=='A'" class="avatar"  draggable="false"
+				 src="https://envri.eu/wp-content/uploads/2016/08/software-developer-copy.jpg" alt="Avatar man">
+
+				 <img *ngIf="seccion=='B'" class="avatar"  draggable="false"
+					src="https://i.pinimg.com/originals/93/d3/e3/93d3e31639a4d07613de9dccdc8bd5e8.png" alt="Avatar man">
+
+			</div>
+		</div-->
+
+
+
+		
+		<div class="chatbox">
+			<!--div class="top-bar" [ngClass]="{'ppsa': seccion === 'A', 'ppsb' : seccion === 'B' }">
+				<!--div class="avatar"><p>{{seccion}}
+      			</p></div>
+				<br>
+				<img *ngIf="seccion=='A'" class="avatar"
+					src="https://envri.eu/wp-content/uploads/2016/08/software-developer-copy.jpg" alt="Avatar man">
+				<img *ngIf="seccion=='B'" class="avatar"
+					src="https://i.pinimg.com/originals/93/d3/e3/93d3e31639a4d07613de9dccdc8bd5e8.png" alt="Avatar man">
+
+				<p><b>
+					<div class="name" style="font-size: 30px">{{materia}}-4°{{seccion}}</div>
+				</b></p>
+			</div-->
+
+			<div class="middle" style="overflow-y:scroll;">
+				<div >
+
+					<div *ngFor="let message of messages">
+
+						<div *ngIf="message.email != myEmail[0]" class="incoming">
+							<div class="leftBubble" [ngClass]="{'blueTeam': seccion === 'A', 'redTeam' : seccion === 'B' }">
+
+									<b *ngIf="message.email !== myEmail[0]" style="color:chocolate;">
+										{{message.email.split('@')[0]}}:
+									</b>
+
+								{{message.message}}
+
+								<br>
+								<div style=" font-size: 9px">
+									<img style="margin-right: 0; width:7%; height:7%"
+										src="https://firebasestorage.googleapis.com/v0/b/pps1-251a8.appspot.com/o/assets%2Fanimales%2Fback-in-time.png?alt=media&token=5b3801d0-2884-4007-8517-b19931e75e06" />
+									{{message.time  | fecha}}
+								</div>
+							</div>
+							<br>
+						</div>
+
+
+						<div *ngIf="message.email == myEmail[0]" class="outgoing">
+							<div class="rightBubble" >
+
+								{{message.message}}
+
+								<div style=" font-size: 9px">
+									<img style="margin-right: 0; width:7%; height:7%;"
+										src="https://firebasestorage.googleapis.com/v0/b/pps1-251a8.appspot.com/o/assets%2Fanimales%2Fback-in-time.png?alt=media&token=5b3801d0-2884-4007-8517-b19931e75e06" />
+									{{message.time  | fecha}}
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<!--div class="outgoing">
+          <div class="bubble lower">Nah, it's cool.</div>
+          <div class="bubble">Well you should get your Dad a cologne. Here smell it. Oh wait! ...</div>
+        </!--div-->
+					<!--div class="typing">
+						<div class="bubble">
+							<div class="ellipsis one"></div>
+							<div class="ellipsis two"></div>
+							<div class="ellipsis three"></div>
+						</div>
+					</!--div-->
+
+				</div>
+			</div>
+
+			<br>
+			<br>
+			
+			<div class="bottom-bar" [ngClass]="{'ppsa': seccion === 'A', 'ppsb' : seccion === 'B' }">
+				<div class="chat">
+					<input type="text" placeholder="Escribir mensaje..." [(ngModel)]="newMessage"
+						(keyup)="submitMessage($event)" maxlength="21"/>
+					<button type="submit" style="right:8%; width:9%" >
+						<img (click)="saveMessage()"
+							src="https://firebasestorage.googleapis.com/v0/b/pps1-251a8.appspot.com/o/assets%2Fanimales%2Fsend.png?alt=media&token=faa518a0-5764-48ff-a8b4-af049c8a8a6c" />
+					</button>
+				</div>
+			</div>
+		</div>
+		<!--div class="messages"></!--div>
+  <div class="profile">
+    <div class="avatar"><p>H</p></div>
+    <div class="name2">Harry<p class="email">Harry@potter.com</p></div>
+  </div>
+  <ul-- class="people">
+    <li class="person focus">
+      <span class="title">Voldemort </span>
+      <span class="time">2:50pm</span><br>
+      <span class="preview">What are you getting... Oh, oops...</span>
+    </li>
+     <li class="person">
+      <span class="title">Ron</span>
+      <span class="time">2:25pm</span><br>
+      <span class="preview">Meet me at Hogsmeade and bring...</span>
+    </li>
+    <li class="person">
+      <span class="title">Hermione</span>
+      <span class="time">2:12pm</span><br>
+      <span class="preview">Have you and Ron done your hom...</span>
+    </li>
+  </ul-->
+	
+
+
+</ion-content>
